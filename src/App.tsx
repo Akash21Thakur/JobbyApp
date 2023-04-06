@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
 import HomePage from "./routes/HomePage";
 import JobsDetailPage from "./routes/JobsDetailPage";
 import JobsPage from "./routes/JobsPage";
@@ -10,6 +11,7 @@ function App() {
   return (
     <BrowserRouter>
     <GlobalStyle />
+    <Header />
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<HomePage />} />

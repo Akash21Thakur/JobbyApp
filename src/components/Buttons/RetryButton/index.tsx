@@ -1,21 +1,22 @@
 import { inject } from "mobx-react";
+import { useTranslation } from "react-i18next";
 import JobStore from "../../../stores/jobStore";
 import { Retry } from "./styleComponent";
-interface Props{
-    handleButtonClick: () => void
-}
-interface InjectedProps extends Props{
-    jobsStore: JobStore
+interface Props {
+  handleButtonClick: () => void;
 }
 
-const RetryButton = inject('jobsStore')((props: Props) => {
-      const {jobsStore} = props as InjectedProps;
-    const handleClick = () => {
-      props.handleButtonClick();
-    }
+const RetryButton = (props: Props) => {
+  const handleClick = () => {
+    props.handleButtonClick();
+  };
+  const {t} = useTranslation();
 
-    return <>
-    <Retry onClick={handleClick}>Retry</Retry></>
-})
+  return (
+    <>
+      <Retry onClick={handleClick} data-testid='retryButton'>{t('retry')}</Retry>
+    </>
+  );
+};
 
 export default RetryButton;

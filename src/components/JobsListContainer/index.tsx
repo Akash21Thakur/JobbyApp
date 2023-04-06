@@ -78,7 +78,7 @@ const JobsListContainer = inject("jobsStore")(
 
     return (
       <>
-        <Wrapper>{renderComponents()}</Wrapper>
+        <Wrapper data-testid='jobsListRenderId'>{renderComponents()}</Wrapper>
       </>
     );
   })

@@ -7,7 +7,7 @@ interface Props{
 }
 
 const JobDetailContainer = (props: Props) => {
-    console.log(props);
+    // console.log(props);
     return <EachJobCard data={props.data} />
 }
 

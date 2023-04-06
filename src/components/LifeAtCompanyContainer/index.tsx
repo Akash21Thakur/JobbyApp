@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { LifeAtCompanyModel, SkillsModel } from "../../stores/model/JobsModel";
 import { SubHead } from "../SkillsComponent/styleComponents";
 import { LifeDescription, OfficeImage, Wrapper } from "./styleComponent";
@@ -7,13 +8,14 @@ interface Props {
 }
 
 const LifeAtCompanyContainer = (props: Props) => {
-  console.log(props.data);
+  // console.log(props.data);
+  const {t} = useTranslation();
   return (
     <>
-      <SubHead>Life At Company</SubHead>
-      <Wrapper>
-        <LifeDescription>{props.data.description}</LifeDescription>
-        <OfficeImage src={props.data.imageUrl} alt='offic-img' />
+      <SubHead>{t('lifeAtCompany')}</SubHead>
+      <Wrapper id='life-at-company-component' data-testid='lifeAtCompanyWrapperId'>
+        <LifeDescription data-testid='lifePara'>{props.data.description}</LifeDescription>
+        <OfficeImage src={props.data.imageUrl} alt='office-img' />
       </Wrapper>
     </>
   );

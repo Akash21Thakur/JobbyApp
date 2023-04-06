@@ -11,15 +11,23 @@ export interface ProfileDetailsType {
     short_bio: string
 }
 
+export interface ProfileDetailsFetchType{
+    profile_details: ProfileDetailsType
+}
+
 export interface JobsTypes {
     company_logo_url: string,
     employment_type: string,
     id: string,
     job_description: string,
     location: string,
-    package_per_annum?: string,
-    rating: string,
+    package_per_annum: string,
+    rating: number,
     title: string
+}
+
+export interface JobsFetchType{
+    jobs: JobsTypes[]
 }
 
 export interface LifeAtCompanyType{
@@ -34,6 +42,8 @@ export interface JobDetailType extends JobsTypes{
     life_at_company: LifeAtCompanyType;
 }
 
+
+
 export interface SkillsType{
 name: string,
 image_url: string
@@ -45,11 +55,19 @@ export interface JobDataTypes {
 }
 
 export const empType = new Map<string, string>(
-[['FULLTIME', 'Full Time'],
-['PARTTIME', 'Part Time'],
-['FREELANCE', 'Freelance'],
-['INTERNSHIP', 'Internship'],
+[['FULLTIME', 'fullTime'],
+['PARTTIME', 'partTime'],
+['FREELANCE', 'freelance'],
+['INTERNSHIP', 'internship'],
 ])
+
+export const salType = new Map<string, string>(
+    [['1000000', 'tenLpaAndAbove'],
+    ['2000000', 'twentyLpaAndAbove'],
+    ['3000000', 'thirtyLpaAndAbove'],
+    ['4000000', 'fortyLpaAndAbove'],
+    ])
+
 
 
 

@@ -17,7 +17,6 @@ const JobsDetailPage = inject("jobsStore")(
   observer((props: Props) => {
     const { jobsStore } = props as InjectedProps;
     const params = useParams();
-    // console.log(params.id);
 const fetchApi=()=>{
   jobsStore.fetchJobDetails(params.id);
 }
@@ -26,7 +25,7 @@ const fetchApi=()=>{
     }, []);
 
     const renderJobDetails = () => {
-      // console.log(jobsStore.jobData);
+     
       const data=jobsStore.jobData;
       return <>
       

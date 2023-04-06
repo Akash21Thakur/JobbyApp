@@ -1,4 +1,5 @@
 // import { Failue_View } from "../../constants/imageUrl";
+import { useTranslation } from "react-i18next";
 import { FAILURE_LOGO } from "../../constants/imageUrl";
 import {
   MainContainer,
@@ -14,15 +15,14 @@ interface Props {
 }
 
 const ApiFailureComponent = (props: Props) => {
+  const { t } = useTranslation();
   return (
     <>
-      <MainContainer>
+      <MainContainer data-testid='apiFailureTestId'>
         <Wrapper>
-          <NoSavedVideosContainer src={FAILURE_LOGO} />
-          <NotFound>No Jobs Found</NotFound>
-          <NotFoundDesc>
-            We could not find any jobs. Try other filters
-          </NotFoundDesc>
+          <NoSavedVideosContainer src={FAILURE_LOGO} alt="failed-img"/>
+          <NotFound>{t("noJobsFound")}</NotFound>
+          <NotFoundDesc>{t("noJobsWithFilters")}</NotFoundDesc>
           <RetryButton handleButtonClick={props.handleRetry} />
         </Wrapper>
       </MainContainer>

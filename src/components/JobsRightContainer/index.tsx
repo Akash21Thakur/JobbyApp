@@ -1,13 +1,16 @@
 import JobsListContainer from "../JobsListContainer";
 import SearchBar from "../SearchBar";
-import { Wrapper } from "./styledComponents"
+import { Wrapper } from "./styledComponents";
 
 const JobsRightContainer = () => {
-    return (<>
-    <Wrapper>
+  return (
+    <>
+      <Wrapper>
         <SearchBar />
         <JobsListContainer />
-        </Wrapper></>)
-}
+      </Wrapper>
+    </>
+  );
+};
 
 export default JobsRightContainer;

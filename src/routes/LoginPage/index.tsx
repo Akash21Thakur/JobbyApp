@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
 
-import { BreakLine, ErrorMessage, InputLabel, LoginButton, LoginCard, LoginForm, ShowPasswordDiv, SiteLogo, UserInput, Wrapper } from "./styleComponents";
+import {
+  BreakLine,
+  ErrorMessage,
+  InputLabel,
+  LoginButton,
+  LoginCard,
+  LoginForm,
+  ShowPasswordDiv,
+  SiteLogo,
+  UserInput,
+  Wrapper,
+} from "./styleComponents";
 import { useNavigate } from "react-router";
 
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
 import { LOGIN_API } from "../../constants/apiConstants";
 import { WEBSITE_LOGO } from "../../constants/imageUrl";
+import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const [userDetails, setDetails] = useState({
     username: "",
     password: "",
@@ -40,27 +53,8 @@ const LoginPage = () => {
 
       if (response.ok === true) {
         Cookies.set("jwt_token", data.jwt_token, { expires: 30 });
-        // const history = useHistory();
-        // const url= JSON.parse(homeVideosStore.urlHistory);
-        // const previousLocation = JSON.parse(Cookies.get('previousLocation') as string);
-        // Cookies.remove('previousLocation')
-        // const previousLocation = JSON.parse(
-        //   localStorage.getItem("previousLocation")!
-        // );
 
-        // console.log(localStorage.getItem("previousLocation"));
-        // if (previousLocation) {
-        //   // window.sessionStorage.removeItem('previousLocation');
-        //   navigate(previousLocation.pathname + previousLocation.search);
-        //   console.log("akash12345")
-        //   // localStorage.removeItem("previousLocation")
-        //   // navigate(previousLocation.pathname + url.search);
-        // } else {
-        //   // redirect to default page (e.g. dashboard)
-        //   // ...
-          navigate(-1);
-        // }
-        // handleSuccessLogin();
+        navigate(-1);
       } else {
         setLoginFailure({
           errorStatus: true,
@@ -70,15 +64,8 @@ const LoginPage = () => {
       }
     } catch (error: any) {
       console.error(error);
-      // console.log('akashqq')
     }
-
-    // setDetails({
-    //     userName:'',
-    //     password:''
-    // })
   };
-
 
   const handleTogglePassword = () => {
     showPassword(!show);
@@ -98,16 +85,12 @@ const LoginPage = () => {
     }));
   };
 
-  useEffect(()=>{
-
+  useEffect(() => {
     const jwtToken = Cookies.get("jwt_token");
-      if (jwtToken !== undefined) {
-        console.log("Here")
-        navigate(-1);
-        // return <Navigate to="/" />
-      }
-  })
-
+    if (jwtToken !== undefined) {
+      navigate(-1);
+    }
+  });
 
   return (
     <>
@@ -115,17 +98,19 @@ const LoginPage = () => {
         <LoginCard>
           <SiteLogo src={WEBSITE_LOGO} />
           <LoginForm onSubmit={handleSubmit}>
-            <InputLabel>USERNAME</InputLabel>
-            
+            <InputLabel id="username">{t("username")}</InputLabel>
+
             <UserInput
+              aria-labelledby="username"
               value={userDetails.username}
               type="text"
               onChange={handleUsername}
             />
             <BreakLine />
-            <InputLabel>PASSWORD</InputLabel>
+            <InputLabel id="password">{t("password")}</InputLabel>
             <BreakLine />
             <UserInput
+              aria-labelledby="password"
               value={userDetails.password}
               type={show ? "text" : "password"}
               onChange={handlePassword}
@@ -133,13 +118,16 @@ const LoginPage = () => {
 
             <ShowPasswordDiv>
               <UserInput
+                aria-labelledby="showPassword"
                 className="checkbox"
                 type="checkbox"
                 onChange={handleTogglePassword}
               />
-              <InputLabel>Show Password</InputLabel>
+              <InputLabel id="showPassword" htmlFor="show-password">
+                {t("showPassword")}
+              </InputLabel>
             </ShowPasswordDiv>
-            <LoginButton type="submit">Login</LoginButton>
+            <LoginButton type="submit">{t("login")}</LoginButton>
             {loginFailure.errorStatus && (
               <ErrorMessage>*{loginFailure.error_msg}</ErrorMessage>
             )}

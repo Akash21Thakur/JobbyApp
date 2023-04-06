@@ -28,7 +28,7 @@ const ProfileDetails = inject("jobsStore")(
 
     const renderProfileDetails = () => {
        
-        console.log(jobsStore.profileDetails);
+        // console.log(jobsStore.profileDetails);
           const details: ProfileDetailsModel=jobsStore.profileDetails;
         return <>
          <ProfileMainDiv>
@@ -58,7 +58,7 @@ const ProfileDetails = inject("jobsStore")(
             // break;
   
           default:
-            return <div>Video Details</div>;
+            return <Loader />
         }
       };
 

@@ -4,11 +4,14 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px 15px;
+  width: 200px;
 label{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
   input{
     margin-right: 14px;
+     cursor: pointer;
   }
 `;
 

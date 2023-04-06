@@ -22,6 +22,13 @@ height:40px;
     height: 38px;
     cursor: pointer;
   }
+  @media (max-width: 576px) {
+      padding: 10px;
+
+      img{
+        padding-right: 10px;
+      }
+    }
 
   button {
     width: 200px;
@@ -38,7 +45,8 @@ export const NavIcon = styled.i`
     cursor: pointer;
 
     @media (max-width: 576px) {
-      margin-right: 76px;
+      margin-right: 50px;
+      padding: 0px;
       display: block;
     }
   `

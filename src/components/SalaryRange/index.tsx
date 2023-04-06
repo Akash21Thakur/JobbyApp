@@ -1,6 +1,7 @@
 import { inject, observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 import JobStore from "../../stores/jobStore";
-import { employmentItemList, salaryRange } from "../../stores/types";
+import { employmentItemList, salaryRange, salType } from "../../stores/types";
 import { Heading, Wrapper } from "../EmploymentTypes/styleComponents";
 
 
@@ -10,6 +11,7 @@ interface InjectedProps extends Props {
 }
 const SalaryRange = inject("jobsStore")(
   observer((props: Props) => {
+    const {t} = useTranslation();
     const { jobsStore } = props as InjectedProps;
 
     const handleRadioClick = (event: any) => {
@@ -34,7 +36,7 @@ const SalaryRange = inject("jobsStore")(
                 onChange={handleRadioClick}
                 // readOnly
               />
-              {item.substring(0, 2)} LPA and above
+              {t(`${salType.get(item)}`)}
             </label>
           ))}
         </>
@@ -43,7 +45,7 @@ const SalaryRange = inject("jobsStore")(
     return (
       <>
         <Wrapper>
-          <Heading>Salary Range</Heading>
+          <Heading>{t('salaryRange')}</Heading>
           {renderList()}
         </Wrapper>
       </>

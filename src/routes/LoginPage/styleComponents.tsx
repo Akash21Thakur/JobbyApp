@@ -52,7 +52,6 @@ export const SiteLogo = styled.img`
 export const LoginCard = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   background-color: #8a8a9231;
   padding: 40px;
@@ -67,5 +66,3 @@ export const InputLabel = styled.label``;
 export const ErrorMessage = styled.p`
   color: red;
 `;
-
-// export { LoginForm };

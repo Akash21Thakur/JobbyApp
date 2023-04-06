@@ -21,7 +21,7 @@ const withJobHeaderHoc = (WrapperComponent: React.ComponentType<any>) => {
       return (
         <>
           {/* <Wrapper> */}
-            <Header />
+            
             <WrapperComponent/>
           {/* </Wrapper> */}
         </>

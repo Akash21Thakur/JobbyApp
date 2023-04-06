@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { JobsModel } from "../../stores/model/JobsModel";
 import EachJobCard from "../EachJobCard";
@@ -11,10 +12,11 @@ interface Props {
 
 const SimilarJobsList = (props: Props) => {
   const { data } = props;
+  const {t} = useTranslation();
   // console.log(data);
   return (
     <>
-      <SimilarJobHeading>Similar Jobs</SimilarJobHeading>
+      <SimilarJobHeading>{t('similarJobs')}</SimilarJobHeading>
       <SimilarJobsListContainer>
         {data.map((each: JobsModel) => {
           return(
