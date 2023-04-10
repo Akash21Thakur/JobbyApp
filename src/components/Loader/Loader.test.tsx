@@ -4,6 +4,5 @@ import Loader from "."
 describe('render Loader',()=>{
     test('test if loader is rendered',()=>{
         render(<Loader/>)
-        // screen.debug();
     })
 })

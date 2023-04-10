@@ -1,17 +1,56 @@
-import { render,screen } from "@testing-library/react"
-import { MemoryRouter } from "react-router-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+import { I18nextProvider } from "react-i18next";
+import { MemoryRouter, Route, Router } from "react-router-dom";
 import HomePage from ".";
+import i18n from "../../i18n";
 import { Wrapper } from "./styleComponents";
 
-describe('test home page',()=>{
-    test('if it container header',()=>{
-        // render(
-        //     <MemoryRouter>
-        //       <HomePage />
-        //     </MemoryRouter>
-        //   );
-        //   screen.debug();
-    });
-})
+describe("test home page", () => {
+  test("if it renders the Home Page Wrapper component", () => {
+    render(
+      <MemoryRouter>
+        <I18nextProvider i18n={i18n}>
+          <HomePage />
+        </I18nextProvider>
+      </MemoryRouter>
+    );
 
-export {}
+    expect(screen.getByTestId('homePageTestId')).toBeInTheDocument();
+  });
+
+  test("if it renders the Home Page all components", () => {
+    render(
+      <MemoryRouter>
+        <I18nextProvider i18n={i18n}>
+          <HomePage />
+        </I18nextProvider>
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText(/Find The Job That/)).toBeInTheDocument();
+    expect(screen.getByText(/Millions/)).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+
+//   test("navigates to Jobs route when button is clicked", () => {
+//     const history = createMemoryHistory();
+//     render(
+//       <Router history={history}>
+//         <Route path="/">
+//           <HomePage />
+//         </Route>
+//         <Route path="/jobs">
+//           <div>Jobs Page</div>
+//         </Route>
+//       </Router>
+//     );
+//     const findJobsButton = screen.getByText("Find Jobs");
+//     fireEvent.click(findJobsButton);
+//     expect(history.location.pathname).toBe("/jobs");
+//   });
+
+
+});
+
+export {};

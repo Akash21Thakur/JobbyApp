@@ -10,13 +10,12 @@ import {
   JobsTypes,
   ProfileDetailsType,
 } from "../types";
-import { UserProfileDetailServiceFixture } from "../../service/UserProfileService/index.fixture";
-import { JobsListFixture } from "../../service/JobsListService/index.fixture";
 import { JobDetailsServiceApi } from "../../service/JobDetailsService/index.api";
 import { JobsListApi } from "../../service/JobsListService/index.api";
+import { UserProfileDetailServiceApi } from "../../service/UserProfileService/index.api";
 
 class JobStore {
-  jobsList!: JobsModel[];
+  jobsList: JobsModel[] = [];
   profileDetails!: ProfileDetailsModel;
   jobData!: JobDataModel;
 
@@ -68,8 +67,7 @@ class JobStore {
   };
 
   updateSalary = (val: string) => {
-    if (this.salary === val) this.salary = null;
-    else this.salary = val;
+    this.salary = val;
   };
 
   apiUrlGenerator = () => {
@@ -94,7 +92,7 @@ class JobStore {
     this.apiStatusProfileDetails = ApiStatus.LOADING;
 
     try {
-      const serviceObj = new UserProfileDetailServiceFixture();
+      const serviceObj = new UserProfileDetailServiceApi();
       const response = await serviceObj.getUserDetails();
 
       this.profileDetails = new ProfileDetailsModel(
@@ -102,8 +100,8 @@ class JobStore {
       );
       this.apiStatusProfileDetails = ApiStatus.SUCCESS;
     } catch (err) {
-      console.error(err);
-      console.log("Error found");
+      // console.error(err);
+      // console.log("Error found");
       this.apiStatusProfileDetails = ApiStatus.FAILURE;
     }
   };
@@ -117,10 +115,11 @@ class JobStore {
       const obj = new JobsListApi();
       // const obj = new JobsListFixture();
       const response = await obj.getJobsList(this.apiUrlGenerator());
-
+      console.log(response.jobs.length);
       this.jobsList = response.jobs.map(
         (each: JobsTypes) => new JobsModel(each)
       );
+      // console.log(this.jobsList)
 
       this.apiStatusJobList = ApiStatus.SUCCESS;
     } catch (err) {

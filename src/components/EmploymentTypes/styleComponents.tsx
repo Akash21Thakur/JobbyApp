@@ -19,3 +19,6 @@ export const Heading = styled.div`
   padding: 20px 0px;
   font-weight: bold;
 `;
+
+export const CheckBoxLabel = styled.label``
+export const CheckBoxInput = styled.input``

@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import { Provider } from "mobx-react";
 import { I18nextProvider } from "react-i18next";
 import LifeAtCompanyContainer from ".";
 import i18n from "../../i18n";
@@ -16,7 +15,6 @@ describe("LifeAtCompany", () => {
         <LifeAtCompanyContainer data={mockData} />
       </I18nextProvider>
     );
-    // screen.debug();
 
     expect(screen.getByText('Life At Company')).toBeInTheDocument();
     expect(screen.getByTestId('lifePara')).toBeInTheDocument();

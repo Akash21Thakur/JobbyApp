@@ -8,11 +8,11 @@ import JobsRightContainer from "../../components/JobsRightContainer";
 
 const JobsPage = () => {
     return( <>
-    <Wrapper>
+    <Wrapper data-testid='jobPageTestId'>
          <JobsLeftContainer />
          <JobsRightContainer />
     </Wrapper>
     </>)
 }
 
-export default withJobHeaderHoc(JobsPage);
+export default JobsPage;

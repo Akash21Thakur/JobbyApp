@@ -16,9 +16,9 @@ const SkillsComponent = (props: Props) => {
      <SubHead>{t('skills')}</SubHead>
       <Wrapper>
        
-        {props.data && props.data.map((each: SkillsModel) => (
+        {props.data && props.data.map((each: SkillsModel,index) => (
             
-            <EachSkillDiv key={each.imageUrl}>
+            <EachSkillDiv key={each.imageUrl} data-testid={`skillTestId${index+1}`}>
 
             <SkillLogo src={each.imageUrl}/>
             <SkillName>{each.name}</SkillName>

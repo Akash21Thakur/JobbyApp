@@ -5,7 +5,7 @@ import i18n from "../../../i18n";
 // import i18n from "../../../i18n";
 
 
-describe("Button Testing", () => {
+describe("Retry Button Testing", () => {
   const handleRetry = jest.fn();
 
 

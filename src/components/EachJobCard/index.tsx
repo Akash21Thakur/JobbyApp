@@ -37,7 +37,7 @@ const EachJobCard = (props: Props) => {
   const { data } = props;
   // console.log(data);
   return (
-    <Wrapper data-testid='eachJobCardId'>
+    <Wrapper data-testid={`eachJobCardId${data.id}`}>
       <CompanyHeader>
         <CompanyLogo src={data.companyLogoUrl} alt={data.title} />
         <TitleAndStars>

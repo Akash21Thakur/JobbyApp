@@ -2,7 +2,7 @@ import { inject, observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 import JobStore from "../../stores/jobStore";
 import { employmentItemList, empType } from "../../stores/types";
-import { Heading, Wrapper } from "./styleComponents";
+import { CheckBoxInput, CheckBoxLabel, Heading, Wrapper } from "./styleComponents";
 interface Props {}
 interface InjectedProps extends Props {
   jobsStore: JobStore;
@@ -14,7 +14,7 @@ const EmploymentType = inject("jobsStore")(
       handleClick?: Function;
     };
 
-    const handleCheckboxClick = (event: any) => {
+    const handleCheckboxClick = (event: React.ChangeEvent<HTMLInputElement>) => {
       // console.log('CLicked')
       jobsStore.updateEmploymentList(event.target.value, event.target.checked);
       jobsStore.fetchJobsList();
@@ -23,24 +23,26 @@ const EmploymentType = inject("jobsStore")(
     const renderList = () => {
       return (
         <>
-          {employmentItemList.map((item) => (
-            <label key={item}>
-              <input
+        {/* TODO: Need to convert html tag to styled component */}
+          {employmentItemList.map((item,index) => (
+            <CheckBoxLabel key={item}>
+              <CheckBoxInput
                 type="checkbox"
                 // name="item"
                 value={item}
                 checked={jobsStore.selectedEmployment.has(item)}
                 onChange={handleCheckboxClick}
+                data-testid={`checkbox${index + 1}`}
               />
               {t(`${empType.get(item)}`)}
-            </label>
+            </CheckBoxLabel>
           ))}
         </>
       );
     };
     return (
       <>
-        <Wrapper>
+        <Wrapper data-testid='employmentTypesId'>
           <Heading>{t("employmentType")}</Heading>
 
           {renderList()}

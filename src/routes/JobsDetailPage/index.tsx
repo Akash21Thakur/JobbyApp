@@ -5,7 +5,6 @@ import ApiFailureComponent from "../../components/ApiFailureComponent";
 import JobDetailContainer from "../../components/JobDetailContainer";
 import Loader from "../../components/Loader";
 import SimilarJobsList from "../../components/SimilarJobsList";
-import withJobHeaderHoc from "../../hocs/withJobHearderHoc";
 import JobStore from "../../stores/jobStore";
 import { ApiStatus } from "../../stores/types";
 import { Wrapper } from "./styleComponents";
@@ -17,23 +16,21 @@ const JobsDetailPage = inject("jobsStore")(
   observer((props: Props) => {
     const { jobsStore } = props as InjectedProps;
     const params = useParams();
-const fetchApi=()=>{
-  jobsStore.fetchJobDetails(params.id);
-}
+    const fetchApi = () => {
+      jobsStore.fetchJobDetails(params.id);
+    };
     useEffect(() => {
-     fetchApi();
+      fetchApi();
     }, []);
 
     const renderJobDetails = () => {
-     
-      const data=jobsStore.jobData;
-      return <>
-      
-      <JobDetailContainer data={data.jobDetails}/>
+      const data = jobsStore.jobData;
+      return (
+        <>
+          <JobDetailContainer data={data.jobDetails} />
           <SimilarJobsList data={data.similarJobs} />
-     
-         
-      </>;
+        </>
+      );
     };
 
     const renderComponents = () => {
@@ -61,4 +58,4 @@ const fetchApi=()=>{
   })
 );
 
-export default withJobHeaderHoc(JobsDetailPage);
+export default JobsDetailPage;

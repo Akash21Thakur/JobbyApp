@@ -13,7 +13,7 @@ jest.mock("query-string", () => ({
 }));
 
 describe("JobsRightContainer", () => {
-  test("test if search bar and the jobs List renders ", () => {
+  test("Test if search bar and the jobs List renders ", () => {
     const mockJobsStore = {
         jobsList: [],
         apiStatusJobList: ApiStatus.SUCCESS,

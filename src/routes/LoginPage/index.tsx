@@ -88,7 +88,7 @@ const LoginPage = () => {
   useEffect(() => {
     const jwtToken = Cookies.get("jwt_token");
     if (jwtToken !== undefined) {
-      navigate(-1);
+      navigate('/');
     }
   });
 
@@ -101,23 +101,26 @@ const LoginPage = () => {
             <InputLabel id="username">{t("username")}</InputLabel>
 
             <UserInput
+              data-testid="usernameInputTestId"
               aria-labelledby="username"
               value={userDetails.username}
               type="text"
               onChange={handleUsername}
             />
             <BreakLine />
-            <InputLabel id="password">{t("password")}</InputLabel>
+            <InputLabel htmlFor="password">{t("password")}</InputLabel>
             <BreakLine />
             <UserInput
-              aria-labelledby="password"
+              id="password"
               value={userDetails.password}
+              data-testid="passwordInputTestId"
               type={show ? "text" : "password"}
               onChange={handlePassword}
             />
-
+ 
             <ShowPasswordDiv>
               <UserInput
+                data-testid="showPasswordInputTestId"
                 aria-labelledby="showPassword"
                 className="checkbox"
                 type="checkbox"
@@ -127,7 +130,9 @@ const LoginPage = () => {
                 {t("showPassword")}
               </InputLabel>
             </ShowPasswordDiv>
-            <LoginButton type="submit">{t("login")}</LoginButton>
+            <LoginButton type="submit" data-testid="loginSubmitTestId">
+              {t("login")}
+            </LoginButton>
             {loginFailure.errorStatus && (
               <ErrorMessage>*{loginFailure.error_msg}</ErrorMessage>
             )}

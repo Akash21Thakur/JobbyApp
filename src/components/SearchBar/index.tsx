@@ -8,7 +8,6 @@ import {
   SearchIconDiv,
   SearchIcon,
 } from "./styleComponent";
-import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 interface Props {}
 interface InjectedProps extends Props {
@@ -38,8 +37,9 @@ const SearchBar = inject("jobsStore")(
             placeholder={t("search").toString()}
             value={jobsStore.searchedText}
             onChange={(event) => handleSearch(event)}
+            data-testid='searchInputTestId'
           />
-          <SearchIconDiv onClick={handleClick} className="search-icon">
+          <SearchIconDiv onClick={handleClick} className="search-icon" data-testid='searchIconTestId'>
             <SearchIcon className="fa-solid fa-magnifying-glass" />
           </SearchIconDiv>
         </SearchWithIcon>

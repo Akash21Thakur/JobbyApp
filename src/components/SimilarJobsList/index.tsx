@@ -18,11 +18,12 @@ const SimilarJobsList = (props: Props) => {
     <>
       <SimilarJobHeading>{t('similarJobs')}</SimilarJobHeading>
       <SimilarJobsListContainer>
-        {data.map((each: JobsModel) => {
+        {data.map((each: JobsModel,index) => {
           return(
           <Link  to={`/jobs/${each.id}`}
-          key={each.id} className='link similar-jobs'>
-            <EachJobCard data={each} key={each.id} />
+          key={each.id} className='link similar-jobs' data-testid={`similarJobCardTestid${index}`}>
+            
+            <EachJobCard data={each} key={each.id}  />
           </Link>);
         })}
       </SimilarJobsListContainer>

@@ -17,17 +17,17 @@ const HomePage = () => {
   };
   return (
     <>
-      <Wrapper>
+      <Wrapper data-testid='homePageTestId'>
         <MainContainer>
           <HomeHeading>{t('findJob')}</HomeHeading>
           <HomePageDescription>
           {t('searchingForJobs')}
           </HomePageDescription>
-          <LoginButton onClick={handleFindJob}>{t('findJobText')}</LoginButton>
+          <LoginButton data-testid='findJobButton' onClick={handleFindJob}>{t('findJobText')}</LoginButton>
         </MainContainer>
       </Wrapper>
     </>
   );
 };
 
-export default withJobHeaderHoc(HomePage);
+export default HomePage;

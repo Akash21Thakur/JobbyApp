@@ -19,7 +19,7 @@ export class UserProfileDetailServiceApi implements UserProfileDetailService {
 
     
     const response = await fetch(PROFILE_API, option);
-    console.log(response.ok);
     return response.json();
   };
 }
+ 

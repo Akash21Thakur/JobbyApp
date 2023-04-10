@@ -13,7 +13,7 @@ jest.mock("query-string", () => ({
 }));
 
 describe("JobListContainer testing", () => {
-  test("no jobs is rendered when list is empty", () => {
+  test("No jobs is rendered when list is empty", () => {
     const mockJobsStore = {
       jobsList: [],
       apiStatusJobList: ApiStatus.SUCCESS,
@@ -69,7 +69,7 @@ describe("JobListContainer testing", () => {
     );
 
     // screen.debug();
-    const jobs = screen.getAllByTestId("eachJobCardId");
+    const jobs = screen.getAllByTestId(/eachJobCardId/);
     expect(jobs.length).toBe(2);
   });
 
@@ -168,38 +168,38 @@ describe("JobListContainer testing", () => {
   //     //   expect(screen.getByTestId("no-jobs-container")).toBeInTheDocument();
   //     //   screen.debug();
   //     });
-//   beforeEach(() => {
-//     // mock the fetch function
-//     global.fetch = jest.fn();
-//   });
+  //   beforeEach(() => {
+  //     // mock the fetch function
+  //     global.fetch = jest.fn();
+  //   });
 
-//   afterEach(() => {
-//     jest.clearAllMocks();
-//   });
-//   it('fetches jobs list from API and renders correctly', async () => {
-//     const mockJobsList = [
-//       { id: 1, title: 'Job 1', description: 'Description for Job 1' },
-//       { id: 2, title: 'Job 2', description: 'Description for Job 2' },
-//     ];
+  //   afterEach(() => {
+  //     jest.clearAllMocks();
+  //   });
+  //   it('fetches jobs list from API and renders correctly', async () => {
+  //     const mockJobsList = [
+  //       { id: 1, title: 'Job 1', description: 'Description for Job 1' },
+  //       { id: 2, title: 'Job 2', description: 'Description for Job 2' },
+  //     ];
 
-//     global.fetch.mockResponseOnce(JSON.stringify(mockJobsList));
+  //     global.fetch.mockResponseOnce(JSON.stringify(mockJobsList));
 
-//     const mockJobsStore = new JobStore();
+  //     const mockJobsStore = new JobStore();
 
-//     render(
-//       <I18nextProvider i18n={i18n}>
-//         <Provider jobsStore={mockJobsStore}>
-//           <JobsListContainer />
-//         </Provider>
-//       </I18nextProvider>
-//     );
+  //     render(
+  //       <I18nextProvider i18n={i18n}>
+  //         <Provider jobsStore={mockJobsStore}>
+  //           <JobsListContainer />
+  //         </Provider>
+  //       </I18nextProvider>
+  //     );
 
-//     expect(screen.getByTestId('jobsListRenderId')).toHaveTextContent('Loading...');
+  //     expect(screen.getByTestId('jobsListRenderId')).toHaveTextContent('Loading...');
 
-//     await waitFor(() => {
-//       expect(mockJobsStore.jobsList).toEqual(mockJobsList);
-//       expect(screen.getByTestId('jobsListRenderId')).not.toHaveTextContent('Loading...');
-//       expect(screen.getAllByTestId('jobCardTestId')).toHaveLength(mockJobsList.length);
-//     });
-//   });
+  //     await waitFor(() => {
+  //       expect(mockJobsStore.jobsList).toEqual(mockJobsList);
+  //       expect(screen.getByTestId('jobsListRenderId')).not.toHaveTextContent('Loading...');
+  //       expect(screen.getAllByTestId('jobCardTestId')).toHaveLength(mockJobsList.length);
+  //     });
+  //   });
 });

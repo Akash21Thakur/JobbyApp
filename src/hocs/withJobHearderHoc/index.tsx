@@ -3,33 +3,23 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import { Wrapper } from "./styleComponents";
 
-const withJobHeaderHoc = (WrapperComponent: React.ComponentType<any>) => {
-    const MainHocContent = () => {
-      // const [showDrawer,toggleDrawer] = useState(false);
-      // const handleDrawerClick = () => {
-      //   toggleDrawer(prevState => (!prevState))
-      // }
+// following component is never used
 
-      // const navigate= useNavigate();
-      const jwtToken = Cookies.get("jwt_token");
-      if (jwtToken === undefined) {
-        // console.log(JSON.stringify(window.location));
-        console.log("Not Logged In");
-       return <Navigate to="/login" />
-       
-      }
-      return (
-        <>
-          {/* <Wrapper> */}
-            
-            <WrapperComponent/>
-          {/* </Wrapper> */}
-        </>
-      );
-    };
-  
-    return MainHocContent;
+const withJobHeaderHoc = (WrapperComponent: React.ComponentType<any>) => {
+  const MainHocContent = () => {
+    const jwtToken = Cookies.get("jwt_token");
+    if (jwtToken === undefined) {
+      console.log("Not Logged In");
+      return <Navigate to="/login" />;
+    }
+    return (
+      <>
+        <WrapperComponent />
+      </>
+    );
   };
-  
-  export default withJobHeaderHoc;
-  
+
+  return MainHocContent;
+};
+
+export default withJobHeaderHoc;

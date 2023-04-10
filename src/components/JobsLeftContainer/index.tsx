@@ -7,7 +7,7 @@ import { HorizontalLine, Wrapper } from "./styleComponents";
 const JobsLeftContainer = () => {
   return (
     <>
-      <Wrapper>
+      <Wrapper data-testid='jobsLeftContainerTestId'>
         <ProfileDetails />
         <HorizontalLine />
         <EmploymentTypes />

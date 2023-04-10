@@ -33,7 +33,7 @@ const ProfileDetails = inject("jobsStore")(
         return <>
          <ProfileMainDiv>
          
-          <ProfilePic src={details.profileImageUrl} alt={details.name} />
+          <ProfilePic data-testid="userNameProfile" src={details.profileImageUrl} alt={details.name} />
           <UserName>{details.name}</UserName>
           <UserDescription>{details.shortBio}</UserDescription>
              {/* <ProfileDetailsDiv></ProfileDetailsDiv> */}

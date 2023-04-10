@@ -17,7 +17,6 @@ describe("NavigationPages Component", () => {
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Jobs")).toBeInTheDocument();
 
-    // screen.debug();
   });
 
   test("check if it containes 2 anchor tag", () => {
@@ -32,8 +31,6 @@ describe("NavigationPages Component", () => {
     expect(screen.getByTestId('homeNavigationId')).toHaveAttribute('href','/');
     expect(screen.getByTestId('jobsNavigationId')).toHaveAttribute('href','/jobs');
  
-    // const anchorTags= screen.getAllByRole('a');
 
-    // screen.debug();
   });
 });

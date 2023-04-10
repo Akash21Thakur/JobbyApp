@@ -6,7 +6,7 @@ import { JobDetailModel, JobsModel } from "../../stores/model/JobsModel";
 
 
 
-describe("Each Job Card", () => {
+describe("Each Job Card Testing", () => {
 
   const mockData: JobsModel = {
     id: 'id',
@@ -35,7 +35,7 @@ describe("Each Job Card", () => {
         description: 'life description',
         imageUrl: 'image url'
       }
-  };
+  }; 
 
   test("renders the comoany logo", () => {
     render(

@@ -16,7 +16,7 @@ describe("render when Api resquest fails", () => {
     expect(screen.getByText("Retry")).toBeInTheDocument();
   });
 
-  test("renders ApiFailureComponent without crashing", () => {
+  test("render ApiFailureComponent without crashing", () => {
     render(
       <I18nextProvider i18n={i18n}>
         <ApiFailureComponent handleRetry={handleRetry} />

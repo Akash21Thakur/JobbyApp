@@ -2,8 +2,12 @@ import { inject, observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 import JobStore from "../../stores/jobStore";
 import { employmentItemList, salaryRange, salType } from "../../stores/types";
-import { Heading, Wrapper } from "../EmploymentTypes/styleComponents";
-
+import {
+  CheckBoxInput,
+  CheckBoxLabel,
+  Heading,
+  Wrapper,
+} from "../EmploymentTypes/styleComponents";
 
 interface Props {}
 interface InjectedProps extends Props {
@@ -11,41 +15,39 @@ interface InjectedProps extends Props {
 }
 const SalaryRange = inject("jobsStore")(
   observer((props: Props) => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const { jobsStore } = props as InjectedProps;
 
-    const handleRadioClick = (event: any) => {
+    const handleRadioClick = (event: React.ChangeEvent<HTMLInputElement>) => {
       // console.log("here123")
       jobsStore.updateSalary(event.target.value);
-      jobsStore.fetchJobsList()  ;
+      jobsStore.fetchJobsList();
       // console.log(jobsStore.salary);
     };
 
-    
     const renderList = () => {
       return (
         <>
-          {salaryRange.map((item) => (
-            <label key={item}>
-              <input
+          {salaryRange.map((item, index) => (
+            <CheckBoxLabel key={item}>
+              <CheckBoxInput
                 type="radio"
                 name="item"
                 value={item}
                 checked={jobsStore.salary === item}
-                // onClick={handleRadioClick}
                 onChange={handleRadioClick}
-                // readOnly
+                data-testid={`radiobutton${index + 1}`}
               />
               {t(`${salType.get(item)}`)}
-            </label>
+            </CheckBoxLabel>
           ))}
         </>
       );
     };
     return (
       <>
-        <Wrapper>
-          <Heading>{t('salaryRange')}</Heading>
+        <Wrapper data-testid="salaryRangeTestId">
+          <Heading>{t("salaryRange")}</Heading>
           {renderList()}
         </Wrapper>
       </>

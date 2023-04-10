@@ -3,8 +3,8 @@ import { I18nextProvider } from "react-i18next";
 import NoJobsContainer from ".";
 import i18n from "../../i18n";
 
-describe("render when Api resquest fails", () => {
-  const handleRetry = jest.fn();
+describe("render when No Job Container", () => {
+  
 
   test("renders ApiFailureComponent without crashing", () => {
     render(
@@ -18,7 +18,6 @@ describe("render when Api resquest fails", () => {
     expect(screen.getByText(/We could not find any jobs/)).toBeInTheDocument();
     expect(screen.getByAltText("noJobImg")).toBeInTheDocument();
 
-    // expect(screen.getByText("Retry")).toBeInTheDocument();
   });
 
   // test("renders ApiFailureComponent without crashing", () => {
