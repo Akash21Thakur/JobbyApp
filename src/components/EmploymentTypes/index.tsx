@@ -28,7 +28,6 @@ const EmploymentType = inject("jobsStore")(
             <CheckBoxLabel key={item}>
               <CheckBoxInput
                 type="checkbox"
-                // name="item"
                 value={item}
                 checked={jobsStore.selectedEmployment.has(item)}
                 onChange={handleCheckboxClick}

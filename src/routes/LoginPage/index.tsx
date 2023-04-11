@@ -46,15 +46,15 @@ const LoginPage = () => {
     };
 
     try {
-      const response = await fetch(LOGIN_API, option);
+      const response = await fetch("https://apis.ccbp.in/login", option);
       const data = await response.json();
 
-      // console.log(response);
+      console.log(response);
 
       if (response.ok === true) {
         Cookies.set("jwt_token", data.jwt_token, { expires: 30 });
-
-        navigate(-1);
+        // console.log("here123");
+        navigate("/");
       } else {
         setLoginFailure({
           errorStatus: true,
@@ -88,7 +88,7 @@ const LoginPage = () => {
   useEffect(() => {
     const jwtToken = Cookies.get("jwt_token");
     if (jwtToken !== undefined) {
-      navigate('/');
+      navigate("/");
     }
   });
 
@@ -97,7 +97,7 @@ const LoginPage = () => {
       <Wrapper>
         <LoginCard>
           <SiteLogo src={WEBSITE_LOGO} />
-          <LoginForm onSubmit={handleSubmit}>
+          <LoginForm onSubmit={handleSubmit} data-testid="formSubmitTestId">
             <InputLabel id="username">{t("username")}</InputLabel>
 
             <UserInput
@@ -117,7 +117,7 @@ const LoginPage = () => {
               type={show ? "text" : "password"}
               onChange={handlePassword}
             />
- 
+
             <ShowPasswordDiv>
               <UserInput
                 data-testid="showPasswordInputTestId"
@@ -134,7 +134,9 @@ const LoginPage = () => {
               {t("login")}
             </LoginButton>
             {loginFailure.errorStatus && (
-              <ErrorMessage>*{loginFailure.error_msg}</ErrorMessage>
+              <ErrorMessage data-testid="errorMsgTestId">
+                *{loginFailure.error_msg}
+              </ErrorMessage>
             )}
           </LoginForm>
         </LoginCard>

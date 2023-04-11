@@ -10,11 +10,13 @@ const RetryButton = (props: Props) => {
   const handleClick = () => {
     props.handleButtonClick();
   };
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <>
-      <Retry onClick={handleClick} data-testid='retryButton'>{t('retry')}</Retry>
+      <Retry onClick={handleClick} data-testid="retryButton">
+        {t("retry")}
+      </Retry>
     </>
   );
 };
