@@ -2,9 +2,7 @@ import "cypress-react-selector";
 import { PROFILE_API } from "../constants/apiConstants";
 
 describe("template spec", () => {
-  afterEach(() => {
-    // cy.wait(1000);
-  });
+  
   it("logs in successfully", () => {
     cy.visit("http://localhost:3004/login");
  
@@ -12,9 +10,7 @@ describe("template spec", () => {
     cy.findByTestId("passwordInputTestId").type("rahul@2021"); // enter password
     cy.findByTestId("loginSubmitTestId").click(); // click on the submit button
 
-    // cy.go(-1);
-    // cy.url().should("include", "http://localhost:3004"); // assert that the URL includes the dashboard path
-    // cy.findByTestId('findJobButton').should('contain', 'Find Jobs') // assert that the welcome message is displayed
+    
   });
   it("Error meassage when invalid credential", () => {
     cy.visit("http://localhost:3004/login");
@@ -23,8 +19,6 @@ describe("template spec", () => {
     cy.findByTestId("passwordInputTestId").type("rahul @2021"); // enter password
     cy.findByTestId("loginSubmitTestId").click(); // click on the submit button
 
-    // cy.url().should("include", "http://localhost:3004"); // assert that the URL includes the dashboard path
-    // cy.findByTestId('findJobButton').should('contain', 'Find Jobs') // assert that the welcome message is displayed
   });
 
   it("Move to jobs page on Jobs nav click", () => {
