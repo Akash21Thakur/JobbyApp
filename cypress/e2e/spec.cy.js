@@ -8,7 +8,7 @@ describe("template spec", () => {
   it("logs in successfully", () => {
     cy.visit("http://localhost:3004/login");
  
-    cy.findByTestId("usernameInputTestId").type("rahul"); // enter username
+    cy.findByTestId("usernameInputTestId").type("rahul");
     cy.findByTestId("passwordInputTestId").type("rahul@2021"); // enter password
     cy.findByTestId("loginSubmitTestId").click(); // click on the submit button
 
