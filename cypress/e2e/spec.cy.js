@@ -7,7 +7,7 @@ describe("template spec", () => {
   });
   it("logs in successfully", () => {
     cy.visit("http://localhost:3004/login");
-
+ 
     cy.findByTestId("usernameInputTestId").type("rahul"); // enter username
     cy.findByTestId("passwordInputTestId").type("rahul@2021"); // enter password
     cy.findByTestId("loginSubmitTestId").click(); // click on the submit button
@@ -51,7 +51,7 @@ describe("template spec", () => {
   it("Move to Login Page when Logout is Clicked", () => {
     cy.visit("http://localhost:3004/jobs");
     cy.contains("Logout").click();
-    cy.url().should("include", "/login");
+    cy.url().should("include", "http://localhost:3004/login");
   });
 });
 
@@ -156,6 +156,105 @@ describe("Job Card Details", () => {
 
     cy.visit("http://localhost:3004/jobs/214");
     //cy.get('[data-testid="similarJobCardTestid0"] > [data-testid="eachJobCardId2b40029d-e5a5-48cc-84a6-b6e12d25625d"]')
-    
+    const jobCards = cy.findAllByTestId(/eachJobCardId*/i);
+    jobCards.should("have.length", 4);
+    jobCards.eq(2).click();
+    // cy.url().should("include", "http://localhost:3004/jobs/*");
+    // check if the current URL matches a specific URL
+    cy.url().should(
+      "eq",
+      "http://localhost:3004/jobs/2b40029d-e5a5-48cc-84a6-b6e12d25625d"
+    );
   });
+
+  it("check if the jobsList is returned when the user check on employment types", () => {
+    cy.intercept(
+      "GET",
+      // "https://apis.ccbp.in/jobs?employment_type=FULLTIME&minimum_package&search=",
+
+      "https://apis.ccbp.in/jobs?employment_type=FULLTIME&minimum_package&search=",
+      {
+        fixture: "jobsList",
+      }
+    ).as("getJobsList");
+
+    cy.visit("http://localhost:3004/jobs");
+
+    const fullTimeType = cy.findByText(/full time/i);
+    fullTimeType.click();
+  });
+
+  it("check if the jobsList is returned when the user selects a salary range", () => {
+    cy.intercept(
+      "GET",
+      // "https://apis.ccbp.in/jobs?employment_type=FULLTIME&minimum_package&search=",
+      "https://apis.ccbp.in/jobs?employment_type=&minimum_package=3000000&search=",
+      {
+        fixture: "jobsList",
+      }
+    ).as("getJobsList");
+
+    cy.visit("http://localhost:3004/jobs");
+    // screen.getByText
+
+    const salaryRange = cy.findByText(/30 lpa and above/i);
+    salaryRange.click();
+  });
+
+  
+
+
+
+  it("check if the jobsList is returned based on search text", () => {
+    cy.intercept(
+      "GET",
+      "https://apis.ccbp.in/jobs?employment_type=&minimum_package&search=Frontend",
+      // "https://apis.ccbp.in/jobs?employment_type=FULLTIME&minimum_package&search=",
+      // "https://apis.ccbp.in/jobs?employment_type=&minimum_package=3000000&search=",
+      {
+        fixture: "jobsList",
+      }
+    ).as("getJobsList");
+
+    cy.visit("http://localhost:3004/jobs");
+    // screen.getByTextcy.get('[data-testid="searchInputTestId"]')
+    // cy.get('.sc-dxroEu')
+
+    const searchBox = cy.findByTestId("searchInputTestId");
+    searchBox.type("Frontend");
+    cy.findByTestId('searchIconTestId').click();
+
+  });
+
+
+  it("check if the jobsList is returned by search text, employment type and salary range", () => {
+    cy.intercept(
+      "GET",
+      "https://apis.ccbp.in/jobs?employment_type=FULLTIME&minimum_package=1000000&search=Frontend",
+      // "https://apis.ccbp.in/jobs?employment_type=FULLTIME&minimum_package&search=",
+      // "https://apis.ccbp.in/jobs?employment_type=&minimum_package=3000000&search=",
+      {
+        fixture: "jobsList",
+      }
+    ).as("getJobsList");
+
+    cy.visit("http://localhost:3004/jobs");
+    // screen.getByTextcy.get('[data-testid="searchInputTestId"]')
+    // cy.get('.sc-dxroEu')
+
+    const fullTimeType = cy.findByText(/full time/i);
+    fullTimeType.click();
+
+    
+    
+    
+    const searchBox = cy.findByTestId("searchInputTestId");
+    searchBox.type("Frontend");
+    cy.findByTestId('searchIconTestId').click();
+    const salaryRange = cy.findByText(/10 lpa and above/i);
+    salaryRange.click();
+
+  });
+
+  // test
 });

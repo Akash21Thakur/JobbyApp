@@ -74,8 +74,8 @@ class JobStore {
     const val = this.displayArray();
     // console.log(val);
     const queryParams = qs.stringify({
-      employment_type: val.join(","),
       minimum_package: this.salary,
+      employment_type: val.join(","),
       search: this.searchedText,
     });
     //  console.log(this.displayArray().join(','))

@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <Wrapper data-testid='headerId'>
       <Link to="/">
-        <SiteLogo src={WEBSITE_LOGO} />
+        <SiteLogo src={WEBSITE_LOGO} alt="jobby-app-logo"/>
       </Link>
       <NavigationPages />
 

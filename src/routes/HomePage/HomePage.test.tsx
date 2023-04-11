@@ -20,6 +20,7 @@ describe("test home page", () => {
   });
 
   test("if it renders the Home Page all components", () => {
+    const findJobsBtn= jest.fn();
     render(
       <MemoryRouter>
         <I18nextProvider i18n={i18n}>
@@ -30,7 +31,10 @@ describe("test home page", () => {
 
     expect(screen.getByText(/Find The Job That/)).toBeInTheDocument();
     expect(screen.getByText(/Millions/)).toBeInTheDocument();
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    const button=screen.getByRole('button')
+    expect(button).toBeInTheDocument();
+    // fireEvent.click(button);
+    // expect()
   });
 
 //   test("navigates to Jobs route when button is clicked", () => {
@@ -53,4 +57,4 @@ describe("test home page", () => {
 
 });
 
-export {};
+

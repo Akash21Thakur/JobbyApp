@@ -17,7 +17,7 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("test for the various employment types", () => {
-  beforeEach(()=>{
+  beforeEach(() => {
     (useLocation as jest.Mock).mockReturnValue({
       pathname: "",
       search: "",
@@ -33,13 +33,22 @@ describe("test for the various employment types", () => {
         </I18nextProvider>
       </MemoryRouter>
     );
-  })
-  test("check if Employment types renders", () => {
-    expect(screen.getByTestId('headerId')).toBeInTheDocument();
+  });
+  test("check if all the components appear on the screen", () => {
+    expect(screen.getByTestId("headerId")).toBeInTheDocument();
+    expect(screen.getByTestId("logoutId")).toBeInTheDocument();
+    expect(screen.getByTestId("jobsNavigationId")).toBeInTheDocument();
+    expect(screen.getByTestId("homeNavigationId")).toBeInTheDocument();
+    expect(screen.getByAltText(/jobby-app-logo/i)).toBeInTheDocument();
+
+
+    // screen.debug();
   });
 
+  
+
   // test("render header with logo and navigation links", () => {
-   
+
   //   const logoImg = screen.getByRole("img");
   //   expect(logoImg).toBeInTheDocument();
 
@@ -65,10 +74,6 @@ describe("test for the various employment types", () => {
   //   fireEvent.click(logoutButton);
   //   expect(navigate).toHaveBeenCalledTimes(1);
   // });
-
-
-
-  
 });
 
 // jest.mock('react-router-dom', () => ({
@@ -77,21 +82,21 @@ describe("test for the various employment types", () => {
 // }));
 
 // describe('check for logout button', ()=> {
-  
+
 //   test('logout',()=>{
 
 //     const navigate = jest.fn();
 //     const useNavigateMock = jest.spyOn(require('react-router-dom'), 'useNavigate');
 //     useNavigateMock.mockReturnValue(navigate);
-  
+
 //     render(<Header />);
-  
+
 //     // Select the logout button
 //     const logoutButton = screen.getByTestId('logoutId');
-  
+
 //     // Simulate a click event on the logout button
 //     fireEvent.click(logoutButton);
-  
+
 //     // Assert that the navigation function was called with the expected argument
 //     expect(navigate).toHaveBeenCalledWith('/login');
 //   })

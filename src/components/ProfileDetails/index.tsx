@@ -31,7 +31,7 @@ const ProfileDetails = inject("jobsStore")(
         // console.log(jobsStore.profileDetails);
           const details: ProfileDetailsModel=jobsStore.profileDetails;
         return <>
-         <ProfileMainDiv>
+         <ProfileMainDiv data-testid="profileDetailTestId">
          
           <ProfilePic data-testid="userNameProfile" src={details.profileImageUrl} alt={details.name} />
           <UserName>{details.name}</UserName>

@@ -28,10 +28,10 @@ describe("Search Bar Testing", () => {
   });
 
   test("should update the searched text", () => {
-    const jobsStoreMock = {
-      fetchJobsList: jest.fn(),
-      updateSearchedText: jest.fn(),
-    };
+    // const jobsStoreMock = {
+    //   fetchJobsList: jest.fn(),
+    //   updateSearchedText: jest.fn(),
+    // };
 
     render(
       <I18nextProvider i18n={i18n}>

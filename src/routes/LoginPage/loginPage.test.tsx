@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import i18n from "../../i18n";
 
 import LoginPage from "./index";
+// import { LoginForm } from "./index";
 
 describe("Login Route", () => {
   beforeEach(() => {
@@ -29,14 +30,14 @@ describe("Login Route", () => {
     fireEvent.change(passwordInput, { target: { value: "testpassword" } });
     expect(usernameInput).toHaveValue("testuser");
     expect(passwordInput).toHaveValue("testpassword");
-  }); 
+  });
 
   it("should submit the login form when submit button is clicked", () => {
     const usernameInput = screen.getByTestId("usernameInputTestId");
     const passwordInput = screen.getByTestId("passwordInputTestId");
     fireEvent.change(usernameInput, { target: { value: "testuser" } });
     fireEvent.change(passwordInput, { target: { value: "testpassword" } });
-    const submitButton = screen.getByTestId('loginSubmitTestId');
+    const submitButton = screen.getByTestId("loginSubmitTestId");
     fireEvent.click(submitButton);
   });
 
@@ -45,13 +46,28 @@ describe("Login Route", () => {
     const checkbox = screen.getByTestId("showPasswordInputTestId");
     const passwordInput = screen.getByTestId("passwordInputTestId");
 
-    // Check that the password input's type attribute is "text"
+    // Check that the password input's type attribute is "password"
     expect(passwordInput).toHaveAttribute("type", "password");
 
     // Click the checkbox again
     fireEvent.click(checkbox);
 
-    // Check that the password input's type attribute is "password" again
+    // Check that the password input's type attribute is "text" 
     expect(passwordInput).toHaveAttribute("type", "text");
   });
 });
+
+// describe("form validation", () => {
+//   it("check if handle submit is triggered when user clicks on login button", () => {
+//     const handleSubmit = jest.fn();
+//     render(
+//       <I18nextProvider i18n={i18n}>
+//         <LoginForm onSubmit={handleSubmit} />
+//       </I18nextProvider>
+//     );
+ 
+//     // screen.debug(); 
+//     const loginBtn = screen.getByTestId('loginSubmitTestId');
+
+//   });
+// });

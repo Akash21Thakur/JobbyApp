@@ -92,7 +92,7 @@ describe("Each Job Card Testing", () => {
     
     render(
       <I18nextProvider i18n={i18n}>
-          <EachJobCard data={mockData} />
+          <EachJobCard data={mockJobDetailData} />
       </I18nextProvider>
     );
     // screen.debug();
