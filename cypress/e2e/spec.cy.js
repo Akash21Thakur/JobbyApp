@@ -34,7 +34,7 @@ describe("template spec", () => {
     cy.url().should("include", "http://localhost:3004/jobs");
   });
 
-  it("Move to Home Page when Home Nav is Clicked", () => {
+  it("Move to Home Page when Home is Clicked ", () => {
     cy.visit("http://localhost:3004");
 
     cy.contains("Home").click();
