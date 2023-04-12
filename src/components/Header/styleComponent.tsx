@@ -7,15 +7,12 @@ export const Wrapper = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  /* position: fixed; */
-  
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   padding-left: 40px;
-  /* width: 100%; */
-  /* background-color: #8a8a9231; */
-height:40px;
+  height: 40px;
+
   img {
     margin: 0px;
     width: 130px;
@@ -23,32 +20,30 @@ height:40px;
     cursor: pointer;
   }
   @media (max-width: 576px) {
-      padding: 10px;
+    padding: 10px;
 
-      img{
-        padding-right: 10px;
-      }
+    img {
+      padding-right: 10px;
     }
+  }
 
   button {
     width: 200px;
-margin-right:50px;
+    margin-right: 50px;
     @media (max-width: 576px) {
       display: none;
     }
   }
-`
+`;
 
 export const NavIcon = styled.i`
-    display: none;
-    font-size:20px;
-    cursor: pointer;
+  display: none;
+  font-size: 20px;
+  cursor: pointer;
 
-    @media (max-width: 576px) {
-      margin-right: 50px;
-      padding: 0px;
-      display: block;
-    }
-  `
-
-  
+  @media (max-width: 576px) {
+    margin-right: 50px;
+    padding: 0px;
+    display: block;
+  }
+`;

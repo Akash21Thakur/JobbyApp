@@ -20,32 +20,26 @@ const JobsListContainer = inject("jobsStore")(
   observer((props: Props) => {
     const { jobsStore } = props as InjectedProps;
 
-
     const fetchApi = () => {
       jobsStore.fetchJobsList();
-    }
+    };
     useEffect(() => {
       fetchApi();
     }, []);
 
     const renderJobsList = () => {
-      // console.log(jobsStore.jobsList)
-      // const jobsList =
       return (
         <>
           {jobsStore.jobsList.length > 0 ? (
             jobsStore.jobsList.map((each: JobsModel) => {
               return (
-               
                 <Link
-                to={`/jobs/${each.id}`}
-                key={each.id}
-                className="link job-route"
-                // className='job-route'
-              >
-                    <EachJobCard  data={each} />
-                 </Link> 
-                
+                  to={`/jobs/${each.id}`}
+                  key={each.id}
+                  className="link job-route"
+                >
+                  <EachJobCard data={each} />
+                </Link>
               );
             })
           ) : (
@@ -57,19 +51,15 @@ const JobsListContainer = inject("jobsStore")(
 
     const renderComponents = () => {
       const apiStatus = jobsStore.apiStatusJobList;
-      // console.log(apiStatus)
       switch (apiStatus) {
         case ApiStatus.LOADING:
           return <Loader />;
 
         case ApiStatus.SUCCESS:
-          // {console.log("Successs")}
           return renderJobsList();
 
         case ApiStatus.FAILURE:
-          // return <div>Akash</div>
-          return <ApiFailureComponent handleRetry={fetchApi}/>;
-        // break;
+          return <ApiFailureComponent handleRetry={fetchApi} />;
 
         default:
           return <Loader />;
@@ -78,7 +68,7 @@ const JobsListContainer = inject("jobsStore")(
 
     return (
       <>
-        <Wrapper data-testid='jobsListRenderId'>{renderComponents()}</Wrapper>
+        <Wrapper data-testid="jobsListRenderId">{renderComponents()}</Wrapper>
       </>
     );
   })

@@ -18,9 +18,9 @@ const ApiFailureComponent = (props: Props) => {
   const { t } = useTranslation();
   return (
     <>
-      <MainContainer data-testid='apiFailureTestId'>
+      <MainContainer data-testid="apiFailureTestId">
         <Wrapper>
-          <NoSavedVideosContainer src={FAILURE_LOGO} alt="failed-img"/>
+          <NoSavedVideosContainer src={FAILURE_LOGO} alt="failed-img" />
           <NotFound>{t("noJobsFound")}</NotFound>
           <NotFoundDesc>{t("noJobsWithFilters")}</NotFoundDesc>
           <RetryButton handleButtonClick={props.handleRetry} />

@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { JobDetailModel, JobsModel } from "../../stores/model/JobsModel";
@@ -35,7 +34,6 @@ const EachJobCard = (props: Props) => {
   const { t } = useTranslation();
 
   const { data } = props;
-  // console.log(data);
   return (
     <Wrapper data-testid={`eachJobCardId${data.id}`}>
       <CompanyHeader>
@@ -76,7 +74,7 @@ const EachJobCard = (props: Props) => {
                 target="_blank"
                 data-testid="visitLinkId"
               >
-                <VisitDiv >
+                <VisitDiv>
                   <Type>{t("visit")}</Type>
 
                   <Icons className="fa-solid fa-arrow-up-right-from-square" />

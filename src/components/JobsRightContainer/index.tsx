@@ -5,7 +5,7 @@ import { Wrapper } from "./styledComponents";
 const JobsRightContainer = () => {
   return (
     <>
-      <Wrapper data-testid='jobRightContainerTestId'>
+      <Wrapper data-testid="jobRightContainerTestId">
         <SearchBar />
         <JobsListContainer />
       </Wrapper>

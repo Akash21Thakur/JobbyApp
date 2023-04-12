@@ -27,8 +27,7 @@ describe("JobListContainer testing", () => {
       </I18nextProvider>
     );
     expect(screen.getByTestId("no-jobs-container")).toBeInTheDocument();
-    // screen.debug();
-  });
+  }); 
 
   test("test if list renders", () => {
     const mockJobs: JobsModel[] = [
@@ -68,7 +67,6 @@ describe("JobListContainer testing", () => {
       </MemoryRouter>
     );
 
-    // screen.debug();
     const jobs = screen.getAllByTestId(/eachJobCardId/);
     expect(jobs.length).toBe(2);
   });
@@ -89,8 +87,6 @@ describe("JobListContainer testing", () => {
         </I18nextProvider>
       </MemoryRouter>
     );
-
-    // screen.debug();
 
     const jobs = screen.getByTestId("apiFailureTestId");
     expect(jobs).toBeInTheDocument();
@@ -113,8 +109,6 @@ describe("JobListContainer testing", () => {
       </MemoryRouter>
     );
 
-    // screen.debug();
-
     const jobs = screen.getByTestId("loaderTestId");
     expect(jobs).toBeInTheDocument();
   });
@@ -136,70 +130,7 @@ describe("JobListContainer testing", () => {
       </MemoryRouter>
     );
 
-    // screen.debug();
-
     const jobs = screen.getByTestId("loaderTestId");
     expect(jobs).toBeInTheDocument();
   });
-
-  //   it("renders the list of jobs when jobsList is not empty", () => {
-  //     const mockJobs: JobsModel[] = [{
-  //         id: 'id',
-  //         companyLogoUrl: "logoUrl",
-  //         title: "title-of-job",
-  //         rating: 4,
-  //         location: "location1",
-  //         employmentType: "employmentType",
-  //         packagePerAnnum: "packagePerAnnum",
-  //         jobDescription: "jobDescription",
-  //       }];
-  //       const mockJobsStore = {
-  //         jobsList: mockJobs,
-  //         apiStatusJobList: ApiStatus.SUCCESS,
-  //         fetchJobsList: jest.fn(),
-  //       };
-  //     render(
-  //         <I18nextProvider i18n={i18n}>
-  //           <Provider jobsStore={jobsStore}>
-  //             <JobsListContainer />
-  //           </Provider>
-  //         </I18nextProvider>
-  //       );
-  //     //   expect(screen.getByTestId("no-jobs-container")).toBeInTheDocument();
-  //     //   screen.debug();
-  //     });
-  //   beforeEach(() => {
-  //     // mock the fetch function
-  //     global.fetch = jest.fn();
-  //   });
-
-  //   afterEach(() => {
-  //     jest.clearAllMocks();
-  //   });
-  //   it('fetches jobs list from API and renders correctly', async () => {
-  //     const mockJobsList = [
-  //       { id: 1, title: 'Job 1', description: 'Description for Job 1' },
-  //       { id: 2, title: 'Job 2', description: 'Description for Job 2' },
-  //     ];
-
-  //     global.fetch.mockResponseOnce(JSON.stringify(mockJobsList));
-
-  //     const mockJobsStore = new JobStore();
-
-  //     render(
-  //       <I18nextProvider i18n={i18n}>
-  //         <Provider jobsStore={mockJobsStore}>
-  //           <JobsListContainer />
-  //         </Provider>
-  //       </I18nextProvider>
-  //     );
-
-  //     expect(screen.getByTestId('jobsListRenderId')).toHaveTextContent('Loading...');
-
-  //     await waitFor(() => {
-  //       expect(mockJobsStore.jobsList).toEqual(mockJobsList);
-  //       expect(screen.getByTestId('jobsListRenderId')).not.toHaveTextContent('Loading...');
-  //       expect(screen.getAllByTestId('jobCardTestId')).toHaveLength(mockJobsList.length);
-  //     });
-  //   });
 });

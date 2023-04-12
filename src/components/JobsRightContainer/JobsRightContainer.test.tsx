@@ -28,11 +28,8 @@ describe("JobsRightContainer", () => {
         </I18nextProvider> 
       </MemoryRouter>
     );
-    // screen.debug();
     
     expect(screen.getByTestId('searchBarTestId')).toBeInTheDocument()
     expect(screen.getByTestId('jobsListRenderId')).toBeInTheDocument()
-
   });
-  // expect(screen.)
 });

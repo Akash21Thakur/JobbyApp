@@ -28,11 +28,6 @@ describe("Search Bar Testing", () => {
   });
 
   test("should update the searched text", () => {
-    // const jobsStoreMock = {
-    //   fetchJobsList: jest.fn(),
-    //   updateSearchedText: jest.fn(),
-    // };
-
     render(
       <I18nextProvider i18n={i18n}>
         <Provider jobsStore={jobsStore}>
@@ -44,24 +39,5 @@ describe("Search Bar Testing", () => {
     const searchInputBar = screen.getByTestId("searchInputTestId");
     fireEvent.change(searchInputBar, { target: { value: "React Developer" } });
     expect(jobsStore.searchedText).toBe("React Developer");
-    // expect(jobsStoreMock.updateSearchedText).toHaveBeenCalled()
   });
-
-//   test("should update the searched text", () => {
-//     jobsStore.fetchJobsList = jest.fn();
-
-//     render(
-//       <I18nextProvider i18n={i18n}>
-//         <Provider jobsStore={jobsStore}>
-//           <SearchBar />
-//         </Provider>
-//       </I18nextProvider>
-//     );
-//     screen.debug();
-
-//     const searchButton = screen.getByTestId("searchIconTestId");
-//     fireEvent.click(searchButton);
-//     expect(jobsStore.fetchJobsList).toHaveBeenCalledTimes(1);
-//     // expect(jobsStoreMock.updateSearchedText).toHaveBeenCalled()
-//   }); 
 });

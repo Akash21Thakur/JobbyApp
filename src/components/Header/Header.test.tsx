@@ -29,7 +29,7 @@ describe("test for the various employment types", () => {
     render(
       <MemoryRouter>
         <I18nextProvider i18n={i18n}>
-          <Header />
+          <Header  />
         </I18nextProvider>
       </MemoryRouter>
     );
@@ -41,63 +41,8 @@ describe("test for the various employment types", () => {
     expect(screen.getByTestId("homeNavigationId")).toBeInTheDocument();
     expect(screen.getByAltText(/jobby-app-logo/i)).toBeInTheDocument();
 
-
-    // screen.debug();
   });
 
-  
-
-  // test("render header with logo and navigation links", () => {
-
-  //   const logoImg = screen.getByRole("img");
-  //   expect(logoImg).toBeInTheDocument();
-
-  //   expect(logoImg).toHaveAttribute(
-  //     "src",
-  //     "https://assets.ccbp.in/frontend/react-js/logo-img.png"
-  //   );
-  //   const homeLink = screen.getByText("Home");
-  //   expect(homeLink).toBeInTheDocument();
-
-  //   const jobsLink = screen.getByText("Jobs");
-  //   expect(jobsLink).toBeInTheDocument();
-  //   const history = createMemoryHistory();
-  // history.push('/home');
-
-  // // Set up the useLocation and useNavigate hooks
-  // const useLocationMock = jest.spyOn(require('react-router-dom'), 'useLocation');
-  // useLocationMock.mockReturnValue({ pathname: '/home' });
-  // const navigate = jest.fn();
-  // jest.spyOn(useNavigate as () => (path: string) => void, 'default').mockReturnValue(navigate);
-  //   const logoutButton = screen.getByRole("button", { name: "Logout" });
-  //   expect(logoutButton).toBeInTheDocument();
-  //   fireEvent.click(logoutButton);
-  //   expect(navigate).toHaveBeenCalledTimes(1);
-  // });
 });
 
-// jest.mock('react-router-dom', () => ({
-//   ...jest.requireActual('react-router-dom'),
-//   useNavigate: () => jest.fn(),
-// }));
 
-// describe('check for logout button', ()=> {
-
-//   test('logout',()=>{
-
-//     const navigate = jest.fn();
-//     const useNavigateMock = jest.spyOn(require('react-router-dom'), 'useNavigate');
-//     useNavigateMock.mockReturnValue(navigate);
-
-//     render(<Header />);
-
-//     // Select the logout button
-//     const logoutButton = screen.getByTestId('logoutId');
-
-//     // Simulate a click event on the logout button
-//     fireEvent.click(logoutButton);
-
-//     // Assert that the navigation function was called with the expected argument
-//     expect(navigate).toHaveBeenCalledWith('/login');
-//   })
-// })

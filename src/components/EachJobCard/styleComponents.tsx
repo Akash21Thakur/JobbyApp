@@ -3,21 +3,16 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* width: 100%; */
   background-color: #8a8a9231;
   margin-bottom: 40px;
-  
   padding: 25px;
   border-radius: 12px;
-
   span {
     font-weight: 600;
   }
 `;
 
-export const Link = styled.a`
- 
-`;
+export const Link = styled.a``;
 
 export const CompanyHeader = styled.div`
   display: flex;
@@ -35,7 +30,6 @@ export const TitleAndStars = styled.div`
 
 export const StarAndValue = styled.div`
   display: flex;
-
   align-items: center;
   margin-top: 10px;
 `;
@@ -43,9 +37,6 @@ export const StarAndValue = styled.div`
 export const LocationTypePackageDiv = styled.div`
   display: flex;
   justify-content: space-between;
-
-  /* margin-top:  */
-
   margin-top: 25px;
 `;
 export const Detail = styled.div`
@@ -86,7 +77,8 @@ export const DescriptionDiv = styled.div`
 `;
 
 export const VisitDiv = styled.div`
-  color: #6366f1; span {
+  color: #6366f1;
+  span {
     margin-right: 10px;
   }
 `;

@@ -5,9 +5,7 @@ import { JobsFetchType } from "../../stores/types";
 export class JobsListFixture implements JobsListService {
   constructor() {}
 
-  getJobsList = async (url: string)
-  : Promise<JobsFetchType> => {
-    // const data : JobsFetchType = jobListJson;
+  getJobsList = async (url: string): Promise<JobsFetchType> => {
     return new Promise((resolve) => {
       resolve(jobListJson);
     });
