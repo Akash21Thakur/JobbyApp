@@ -19,27 +19,27 @@ const SearchBar = inject("jobsStore")(
     const { jobsStore } = props as InjectedProps;
 
     const handleSearch = (event: any) => {
-      // console.log("here123")
       jobsStore.updateSearchedText(event.target.value);
-      //   console.log(jobsStore.searchedText);
     };
 
     const handleClick = () => {
       jobsStore.fetchJobsList();
-      //  jobsStore.apiUrlGenerator();
     };
-    // const search: string = {t('search')};
     return (
       <>
-        <SearchWithIcon data-testid='searchBarTestId'>
+        <SearchWithIcon data-testid="searchBarTestId">
           <SearchVideos
             type="search"
             placeholder={t("search").toString()}
             value={jobsStore.searchedText}
             onChange={(event) => handleSearch(event)}
-            data-testid='searchInputTestId'
+            data-testid="searchInputTestId"
           />
-          <SearchIconDiv onClick={handleClick} className="search-icon" data-testid='searchIconTestId'>
+          <SearchIconDiv
+            onClick={handleClick}
+            className="search-icon"
+            data-testid="searchIconTestId"
+          >
             <SearchIcon className="fa-solid fa-magnifying-glass" />
           </SearchIconDiv>
         </SearchWithIcon>

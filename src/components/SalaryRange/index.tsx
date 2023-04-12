@@ -1,7 +1,7 @@
 import { inject, observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
+import { salaryRange, salType } from "../../constants/valuesConstants";
 import JobStore from "../../stores/jobStore";
-import { employmentItemList, salaryRange, salType } from "../../stores/types";
 import {
   CheckBoxInput,
   CheckBoxLabel,
@@ -19,10 +19,8 @@ const SalaryRange = inject("jobsStore")(
     const { jobsStore } = props as InjectedProps;
 
     const handleRadioClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-      // console.log("here123")
       jobsStore.updateSalary(event.target.value);
       jobsStore.fetchJobsList();
-      // console.log(jobsStore.salary);
     };
 
     const renderList = () => {

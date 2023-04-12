@@ -8,7 +8,6 @@ interface Props {
 }
 
 const LifeAtCompanyContainer = (props: Props) => {
-  // console.log(props.data);
   const {t} = useTranslation();
   return (
     <>

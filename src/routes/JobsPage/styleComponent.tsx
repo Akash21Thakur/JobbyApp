@@ -8,7 +8,5 @@ export const Wrapper = styled.div`
 
   @media (max-width: 760px) {
     flex-wrap: wrap;
-    /* justify-content: center; */
   }
-  /* height: 100%; */
 `;

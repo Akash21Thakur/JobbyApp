@@ -15,8 +15,6 @@ import {
 import { useNavigate } from "react-router";
 
 import Cookies from "js-cookie";
-import { Navigate } from "react-router-dom";
-import { LOGIN_API } from "../../constants/apiConstants";
 import { WEBSITE_LOGO } from "../../constants/imageUrl";
 import { useTranslation } from "react-i18next";
 
@@ -37,7 +35,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    // console.log(props);
 
     const option = {
       method: "POST",
@@ -53,7 +50,7 @@ const LoginPage = () => {
 
       if (response.ok === true) {
         Cookies.set("jwt_token", data.jwt_token, { expires: 30 });
-        // console.log("here123");
+
         navigate("/");
       } else {
         setLoginFailure({

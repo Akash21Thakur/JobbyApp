@@ -6,63 +6,63 @@ import ProfileDetailsModel from "../../stores/model/ProfileDetailsModel";
 import { ApiStatus } from "../../stores/types";
 import RetryButton from "../Buttons/RetryButton";
 import Loader from "../Loader";
-import { ProfileMainDiv, ProfilePic, UserDescription, UserName } from "./styleComponents";
-
+import {
+  ProfileMainDiv,
+  ProfilePic,
+  UserDescription,
+  UserName,
+} from "./styleComponents";
 
 interface Props {}
 interface InjectedProps extends Props {
   jobsStore: JobStore;
 }
 const ProfileDetails = inject("jobsStore")(
+  observer((props: Props) => {
+    const { jobsStore } = props as InjectedProps;
 
-    observer((props: Props) => {
-      const {jobsStore} = props as InjectedProps;
-   
-
-      const fetchApi= () => {
-        jobsStore.fetchProfileDetails();
-      }
-    useEffect(()=>{
-       fetchApi()
-    },[])
+    const fetchApi = () => {
+      jobsStore.fetchProfileDetails();
+    };
+    useEffect(() => {
+      fetchApi();
+    }, []);
 
     const renderProfileDetails = () => {
-       
-        // console.log(jobsStore.profileDetails);
-          const details: ProfileDetailsModel=jobsStore.profileDetails;
-        return <>
-         <ProfileMainDiv data-testid="profileDetailTestId">
-         
-          <ProfilePic data-testid="userNameProfile" src={details.profileImageUrl} alt={details.name} />
-          <UserName>{details.name}</UserName>
-          <UserDescription>{details.shortBio}</UserDescription>
-             {/* <ProfileDetailsDiv></ProfileDetailsDiv> */}
-         </ProfileMainDiv>
+      const details: ProfileDetailsModel = jobsStore.profileDetails;
+      return (
+        <>
+          <ProfileMainDiv data-testid="profileDetailTestId">
+            <ProfilePic
+              data-testid="userNameProfile"
+              src={details.profileImageUrl}
+              alt={details.name}
+            />
+            <UserName>{details.name}</UserName>
+            <UserDescription>{details.shortBio}</UserDescription>
+          </ProfileMainDiv>
         </>
-    }
+      );
+    };
 
     const renderComponents = () => {
-        const apiStatus = jobsStore.apiStatusProfileDetails;
-        // console.log(apiStatus)
-        switch (apiStatus) {
-          case ApiStatus.LOADING:
-            return <Loader />
-  
-          case ApiStatus.SUCCESS:
-            // {console.log("Successs")}
-            return renderProfileDetails()
-  
-          case ApiStatus.FAILURE:
-            // return <div>Akash</div>
-           return <RetryButton handleButtonClick={fetchApi}/>
-            // break;
-  
-          default:
-            return <Loader />
-        }
-      };
+      const apiStatus = jobsStore.apiStatusProfileDetails;
+      switch (apiStatus) {
+        case ApiStatus.LOADING:
+          return <Loader />;
 
-    return <>{renderComponents()}</>
+        case ApiStatus.SUCCESS:
+          return renderProfileDetails();
+
+        case ApiStatus.FAILURE:
+          return <RetryButton handleButtonClick={fetchApi} />;
+
+        default:
+          return <Loader />;
+      }
+    };
+
+    return <>{renderComponents()}</>;
   })
 );
 

@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-display: flex;
-.navlink{
-    
-    /* color: ${({theme}) => theme.color}; */
+  display: flex;
+
+  .navlink {
     text-decoration: inherit;
     color: white;
     padding: 10px;
@@ -12,13 +11,11 @@ display: flex;
     font-size: 20px;
   }
 
-  span{
+  span {
     @media (max-width: 576px) {
       display: none;
     }
   }
-  `
+`;
 
-  
-
-  export const TextSpan = styled.span``
+export const TextSpan = styled.span``;

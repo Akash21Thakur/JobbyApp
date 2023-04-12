@@ -16,7 +16,6 @@ describe("NavigationPages Component", () => {
 
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Jobs")).toBeInTheDocument();
-
   });
 
   test("check if it containes 2 anchor tag", () => {
@@ -28,9 +27,10 @@ describe("NavigationPages Component", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId('homeNavigationId')).toHaveAttribute('href','/');
-    expect(screen.getByTestId('jobsNavigationId')).toHaveAttribute('href','/jobs');
- 
-
+    expect(screen.getByTestId("homeNavigationId")).toHaveAttribute("href", "/");
+    expect(screen.getByTestId("jobsNavigationId")).toHaveAttribute(
+      "href",
+      "/jobs"
+    );
   });
 });

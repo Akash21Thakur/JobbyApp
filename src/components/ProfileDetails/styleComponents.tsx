@@ -14,9 +14,8 @@ export const ProfileMainDiv = styled.div`
   background-size: cover;
 
   @media (max-width: 760px) {
-       width:100%;
-        /* justify-content: center; */
-    }
+    width: 100%;
+  }
 `;
 
 export const ProfilePic = styled.img`

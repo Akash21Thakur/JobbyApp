@@ -6,8 +6,6 @@ import { ProfileDetailsFetchType } from "../../stores/types";
 export class UserProfileDetailServiceApi implements UserProfileDetailService {
   constructor() {}
 
-  // getDetails = async () : Promise<Respons
-  // ProfileDetailsFetchType
   getUserDetails = async (): Promise<ProfileDetailsFetchType> => {
     const token = Cookies.get("jwt_token");
     const option = {
@@ -17,9 +15,7 @@ export class UserProfileDetailServiceApi implements UserProfileDetailService {
       method: "GET",
     };
 
-    
     const response = await fetch(PROFILE_API, option);
     return response.json();
   };
 }
- 

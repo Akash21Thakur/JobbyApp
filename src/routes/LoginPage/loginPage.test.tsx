@@ -1,10 +1,9 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen} from "@testing-library/react";
 import { I18nextProvider } from "react-i18next";
 import { MemoryRouter } from "react-router-dom";
 import i18n from "../../i18n";
 
 import LoginPage from "./index";
-// import { LoginForm } from "./index";
 
 describe("Login Route", () => {
   beforeEach(() => {
@@ -17,7 +16,6 @@ describe("Login Route", () => {
     );
   });
   test("should render username and password input fields", () => {
-    // screen.debug();
     const usernameInput = screen.getByTestId("usernameInputTestId");
 
     expect(usernameInput).toBeInTheDocument();
@@ -52,22 +50,7 @@ describe("Login Route", () => {
     // Click the checkbox again
     fireEvent.click(checkbox);
 
-    // Check that the password input's type attribute is "text" 
+    // Check that the password input's type attribute is "text"
     expect(passwordInput).toHaveAttribute("type", "text");
   });
 });
-
-// describe("form validation", () => {
-//   it("check if handle submit is triggered when user clicks on login button", () => {
-//     const handleSubmit = jest.fn();
-//     render(
-//       <I18nextProvider i18n={i18n}>
-//         <LoginForm onSubmit={handleSubmit} />
-//       </I18nextProvider>
-//     );
- 
-//     // screen.debug(); 
-//     const loginBtn = screen.getByTestId('loginSubmitTestId');
-
-//   });
-// });

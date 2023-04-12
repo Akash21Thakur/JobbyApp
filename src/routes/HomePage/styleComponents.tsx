@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { HOME_LARGE_BG, HOME_SMALL_BG } from "../../constants/imageUrl";
-// import { Home_Bg_Image_Dark, Home_Bg_Image_Light } from "../../constants/imageUrl";
 
 export const Wrapper= styled.div`
 flex:1;

@@ -8,6 +8,5 @@ export const SimilarJobsListContainer = styled.div`
   .similar-jobs{
     width: 360px;
     margin-right: 35px;
-    /* margin-bottom: 30px; */
   }
 `;

@@ -2,33 +2,6 @@ import "cypress-react-selector";
 import { PROFILE_API } from "../constants/apiConstants";
 
 describe("template spec", () => {
-  // beforeEach(()=>{
-  //   cy.intercept('POST', '/api/login', (req) => {
-  //     req.reply((res) => {
-  //       if (res.body.username === 'correct_username' && res.body.password === 'correct_password') {
-  //         res.send({ status: 'success', message: 'Login successful' })
-  //       } else {
-  //         res.send({ status: 'error', message: 'Invalid username or password' })
-  //       }
-  //     })
-  //   })
-  // })
-  // it("logs in successfully", () => {
-  //   cy.visit("http://localhost:3004/login");
-
-  //   cy.findByTestId("usernameInputTestId").type("rahul");
-  //   cy.findByTestId("passwordInputTestId").type("rahul@2021"); // enter password
-  //   cy.findByTestId("loginSubmitTestId").click(); // click on the submit button
-  //   cy.wait(1000);
-  // });
-  // it("Error meassage when invalid credential", () => {
-  //   cy.visit("http://localhost:3004/login");
-
-  //   cy.findByTestId("usernameInputTestId").type("rahul"); // enter username
-  //   cy.findByTestId("passwordInputTestId").type("rahul @2021"); // enter password
-  //   cy.findByTestId("loginSubmitTestId").click(); // click on the submit button
-  // });
-
   it("Move to jobs page on Jobs nav click", () => {
     cy.visit("http://localhost:3004");
 
@@ -201,11 +174,8 @@ describe("Job Card Details", () => {
 });
 
 describe("login test", () => {
- 
   it("logs in successfully", () => {
-   
     cy.visit("http://localhost:3004/login");
-    // cy.findByTestId('formSubmitTestId').submit(onSubmitMock)
 
     cy.findByTestId("usernameInputTestId").type("rahul");
     cy.findByTestId("passwordInputTestId").type("rahul@2021"); // enter password
@@ -214,17 +184,13 @@ describe("login test", () => {
   });
 
   it("logs in failure", () => {
-   
     cy.visit("http://localhost:3004/login");
-    // cy.findByTestId('formSubmitTestId').submit(onSubmitMock)
 
     cy.findByTestId("usernameInputTestId").type("rahul");
     cy.findByTestId("passwordInputTestId").type("rahul215@2021"); // enter password
     cy.findByTestId("loginSubmitTestId").click(); // click on the submit button
-    // cy.url().should("eq", "http://localhost:3004/");
-    cy.findByTestId("errorMsgTestId").should('exist');
+    cy.findByTestId("errorMsgTestId").should("exist");
   });
-
 });
 
 describe("Login page", () => {
@@ -248,8 +214,6 @@ describe("Login page", () => {
       expect(interception.response.statusCode).to.equal(200);
     });
     cy.url().should("eq", "http://localhost:3004/");
-
-    // cy.url().should("eq", Cypress.config().baseUrl + "/");
   });
 
   it("shows error message on invalid credentials", () => {
@@ -271,73 +235,3 @@ describe("Login page", () => {
     cy.findByTestId("errorMsgTestId").should("be.visible");
   });
 });
-
-
-// describe("Login page", () => {
-//   it("should login successfully with valid credentials", () => {
-//     // Arrange
-//     const username = "testuser";
-//     const password = "testpass";
-//     cy.intercept("POST", "https://apis.ccbp.in/login", (req) => {
-     
-//     if (req.body.username === username && req.body.password === password) {
-// // console.log('akash123')
-//         req.reply({
-//           status: 200,
-//           body: { jwt_token: "valid_token" },
-//           ok: true,
-//         });
-//       } else {
-//         req.reply({
-//           status: 401,
-//           body: { error_msg: "Invalid username or akash" },
-//           // ok: false,
-//         });
-//       }
-//     }).as("loginRequest");
-
-//     // Act
-//     // cy.visit("/");
-//     cy.visit("http://localhost:3004/login");
-//     //
-//     cy.findByTestId("usernameInputTestId").type("212"); // enter username
-//     cy.findByTestId("passwordInputTestId").type("testpassword"); // enter password
-//     // cy.findByLabelText("username").type(username);
-//     // cy.findByLabelText("password").type(password);
-//     cy.findByTestId("loginSubmitTestId").click();
-
-//     // Assert
-//     cy.url().should("eq", "http://localhost:3004/");
-//   });
-
-  // it("should show error message with invalid credentials", () => {
-  //   // Arrange
-  //   const username = "testuser";
-  //   const password = "testpassword";
-  //   cy.intercept("POST", "/api/login", (req) => {
-  //     if (req.body.username === username && req.body.password === password) {
-  //       req.reply({
-  //         status: 200,
-  //         body: { jwt_token: "valid_token" },
-  //       });
-  //     } else {
-  //       req.reply({
-  //         status: 401,
-  //         body: { error_msg: "Invalid username or password" },
-  //       });
-  //     }
-  //   });
-
-  //   // Act
-  //   cy.visit("http://localhost:3000/login");
-  //   cy.findByLabelText("username").type("invaliduser");
-  //   cy.findByLabelText("password").type("invalidpassword");
-  //   cy.findByTestId("loginSubmitTestId").click();
-
-  //   // Assert
-  //   cy.findByTestId("errorMsgTestId").should(
-  //     "have.text",
-  //     "*Invalid username or password"
-  //   );
-  // });
-// });

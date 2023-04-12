@@ -4,15 +4,11 @@ import qs from "query-string";
 import { action, makeObservable, observable } from "mobx";
 import { JobDataModel, JobsModel } from "../model/JobsModel";
 import ProfileDetailsModel from "../model/ProfileDetailsModel";
-import {
-  ApiStatus,
-  employmentItemList,
-  JobsTypes,
-  ProfileDetailsType,
-} from "../types";
+import { ApiStatus, JobsTypes, ProfileDetailsType } from "../types";
 import { JobDetailsServiceApi } from "../../service/JobDetailsService/index.api";
 import { JobsListApi } from "../../service/JobsListService/index.api";
 import { UserProfileDetailServiceApi } from "../../service/UserProfileService/index.api";
+import { employmentItemList } from "../../constants/valuesConstants";
 
 class JobStore {
   jobsList: JobsModel[] = [];
@@ -72,17 +68,15 @@ class JobStore {
 
   apiUrlGenerator = () => {
     const val = this.displayArray();
-    // console.log(val);
+
     const queryParams = qs.stringify({
       minimum_package: this.salary,
       employment_type: val.join(","),
       search: this.searchedText,
     });
-    //  console.log(this.displayArray().join(','))
-    //  console.log(queryParams);
-    //  console.log("akash")
+
     const jobApiUrl = `https://apis.ccbp.in/jobs?${queryParams}`;
-    // console.log(jobApiUrl);
+
     return jobApiUrl;
   };
 
@@ -100,39 +94,31 @@ class JobStore {
       );
       this.apiStatusProfileDetails = ApiStatus.SUCCESS;
     } catch (err) {
-      // console.error(err);
-      // console.log("Error found");
       this.apiStatusProfileDetails = ApiStatus.FAILURE;
     }
   };
 
   fetchJobsList = async () => {
-    // if (this.apiStatusProfileDetails === ApiStatus.SUCCESS) return;
     this.apiStatusJobList = ApiStatus.LOADING;
-    // this.apiStatusProfileDetails = ApiStatus.LOADING;
 
     try {
       const obj = new JobsListApi();
-      // const obj = new JobsListFixture();
       const response = await obj.getJobsList(this.apiUrlGenerator());
       console.log(response.jobs.length);
       this.jobsList = response.jobs.map(
         (each: JobsTypes) => new JobsModel(each)
       );
-      // console.log(this.jobsList)
 
       this.apiStatusJobList = ApiStatus.SUCCESS;
     } catch (err) {
       console.log(err);
       this.apiStatusJobList = ApiStatus.FAILURE;
-      // this.apiStatusProfileDetails = ApiStatus.FAILURE;
     }
   };
 
   fetchJobDetails = async (id: string | undefined) => {
     if (this.apiStatusJobDetails === ApiStatus.SUCCESS) return;
     this.apiStatusJobDetails = ApiStatus.LOADING;
-    // this.apiStatusProfileDetails = ApiStatus.LOADING;
     const token = Cookies.get("jwt_token");
 
     const option = {

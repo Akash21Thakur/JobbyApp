@@ -1,9 +1,5 @@
 import Cookies from "js-cookie";
-import { Navigate, useNavigate } from "react-router-dom";
-import Header from "../../components/Header";
-import { Wrapper } from "./styleComponents";
-
-// following component is never used
+import { Navigate } from "react-router-dom";
 
 const withJobHeaderHoc = (WrapperComponent: React.ComponentType<any>) => {
   const MainHocContent = () => {

@@ -18,18 +18,17 @@ describe("Salary Range Component Testing", () => {
       imageUrl: "demo.jpg1",
     },
     {
-        name: "java",
-        imageUrl: "demo.jpg2",
-      },
-      {
-        name: "java",
-        imageUrl: "demo.jpg22",
-      },
-      {
-        name: "java",
-        imageUrl: "demo.jpg",
-      },
-
+      name: "java",
+      imageUrl: "demo.jpg2",
+    },
+    {
+      name: "java",
+      imageUrl: "demo.jpg22",
+    },
+    {
+      name: "java",
+      imageUrl: "demo.jpg",
+    },
   ];
   test("if heading component is rendered correctly", () => {
     render(
@@ -52,7 +51,7 @@ describe("Salary Range Component Testing", () => {
       </I18nextProvider>
     );
 
-    const skillsElement= screen.getAllByTestId(/skillTestId/)
+    const skillsElement = screen.getAllByTestId(/skillTestId/);
     expect(skillsElement.length).toBe(4);
   });
 });
